@@ -5,7 +5,7 @@ describe "Services" do
   it "should be possible to add a service" do
 
     visit services_path
-    click_on "service_new"
+    click_on "New Service"
 
     name = "GEANT intranet"
     description = "Some description about GEANT intranet"
@@ -13,11 +13,11 @@ describe "Services" do
     fill_in "service_name", with: name
     fill_in "service_description", with: description
 
-    click_on "submit"
+    click_on "Commit"
 
     # user should see a succcess message
 
-    Service.count.should.eq(1)
+    Service.count.should == 1
     Service.first.name.should eq name
     Service.first.description.should eq description
 
