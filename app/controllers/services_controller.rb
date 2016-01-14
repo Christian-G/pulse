@@ -1,7 +1,6 @@
 class ServicesController < ApplicationController
 
   def index
-
   end
 
   def new
@@ -18,7 +17,6 @@ class ServicesController < ApplicationController
   end
 
   def show
-
   end
 
 
