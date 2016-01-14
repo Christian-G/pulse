@@ -4,7 +4,9 @@
 
 ```sql
 
-psql -h localhost postgres -c "create user pulse with password 'pulse' CREATEDB"
+sudo su - postgres
+psql -c "create user pulse with password 'pulse' CREATEDB"
+exit
 ```
 
 ```ruby
