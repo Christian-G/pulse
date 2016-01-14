@@ -5,6 +5,8 @@
 ```sql
 sudo su - postgres
 psql -c "create user pulse with password 'pulse' CREATEDB"
+try this command if asked for a password
+createuser -P -S -d -R -l -e pulse
 exit
 ```
 
