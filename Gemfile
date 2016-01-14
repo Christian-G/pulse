@@ -41,7 +41,7 @@ group :test do
   #gem 'rspec-instafail'
   gem 'mocha', require: 'mocha/api'
   gem 'capybara'
-  gem 'capybara-webkit', git: 'git://github.com/thoughtbot/capybara-webkit.git'
+#  gem 'capybara-webkit', git: 'git://github.com/thoughtbot/capybara-webkit.git'
   gem 'timecop'
   gem 'webmock', require: 'webmock/rspec'
   gem 'simplecov'

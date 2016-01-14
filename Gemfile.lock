@@ -5,14 +5,6 @@ GIT
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
 
-GIT
-  remote: git://github.com/thoughtbot/capybara-webkit.git
-  revision: 90e372cbf34be0764597f3fc5c2dd2c6aa0936d9
-  specs:
-    capybara-webkit (1.7.1)
-      capybara (>= 2.3.0, < 2.6.0)
-      json
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -291,7 +283,6 @@ DEPENDENCIES
   binding_of_caller
   bourbon
   capybara
-  capybara-webkit!
   colorize
   compass-rails
   database_cleaner
@@ -326,3 +317,6 @@ DEPENDENCIES
   timecop
   uglifier
   webmock
+
+BUNDLED WITH
+   1.10.6
