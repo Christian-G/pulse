@@ -19,7 +19,6 @@ ENV["RAILS_ENV"] ||= 'test'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -37,7 +36,9 @@ end
 Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
-  config.treat_symbols_as_metadata_keys_with_true_values = true
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
+
   config.filter_run :focus => true
   config.run_all_when_everything_filtered = true
 
@@ -55,7 +56,14 @@ RSpec.configure do |config|
   config.before(:each) do
     ActionMailer::Base.deliveries.clear
     # Do not use :truncation on postgres, this is very slow. And only use :transaction cleaning for non-js specs.
-    DatabaseCleaner.strategy = example.metadata[:js] ? :deletion : :transaction
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, type: :feature, js: true) do
+    DatabaseCleaner.strategy = :deletion
+  end
+
+  config.before(:each) do
     DatabaseCleaner.start
   end
 
@@ -66,8 +74,6 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include RSpecHelpers::FeatureSpecs, :type => :feature
-  config.include CapybaraHelpers, :type => :feature
-  config.include AuthenticationSpecHelper, :type => :feature
   config.include ApplicationHelper, :type => :feature
 
   config.after :each, type: :feature, js: true do
