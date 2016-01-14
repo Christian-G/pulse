@@ -11,3 +11,10 @@ psql -h localhost postgres -c "create user pulse with password 'pulse' CREATEDB"
 rake db:create
 ```
 
+## Tests
+
+run your tests with `rspec`
+
+## Run Server
+
+rails s
